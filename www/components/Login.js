@@ -4,11 +4,13 @@ function LoginController($scope,$http,myNotices,$location) {
 	$scope.student_no = "21024909";
 	$scope.password = "farhaad";
     var loginDetails ={'student_no' : $scope.student_no,'password' : $scope.password};
-	var url = 'http://10.0.0.10:3000/studentapplogin';
+	var url = 'http://dutnoticeboard.co.za/studentapplogin';
 	$scope.studentApplogin = function(){
 
 
 	if ($scope.student_no == "21024909" &&	$scope.password == "farhaad"){
+			
+			localStorage.setItem("student_id",res.id);
 			alert('Login is successful');
 			$location.path("/main");
 	
