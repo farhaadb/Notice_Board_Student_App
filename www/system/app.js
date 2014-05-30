@@ -25,6 +25,11 @@ var noticeboard = angular.module('App',['shoppinpal.mobile-menu', 'App.services'
 				  controller: 'LecturerController',
             })
 			
+			.when("/files", {
+                templateUrl: "partials/files.html",
+				  controller: 'FilesController',
+            })
+			
 			 .when("/settings", {
                 templateUrl: "partials/settings.html",
             })
