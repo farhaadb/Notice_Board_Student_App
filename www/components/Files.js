@@ -2,7 +2,7 @@
    
 function FilesController($scope,$http ,myNotices,$window,$location) {
 	$scope.statusmessage =  'Updating...';
-	var ip = "http://dutnoticeboard.co.za";
+	var ip = myNotices.ip;
 	$scope.student_id=localStorage.getItem("student_id");;
 	
 	$scope.path_history=[];
