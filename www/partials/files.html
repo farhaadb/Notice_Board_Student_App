@@ -5,34 +5,34 @@
          
 		 <li class="topcoat-list__item2"  style="height:88px">
 		    <a href="#/profile">
-			<img  id="personal-image" src="resources/img/0003.png" />
+			<img  id="personal-image" src="student_modules/resources/img/0003.png" />
 				<div id="personal">Hayden Sookchand<br>Electronic Eng</div>
 			</a>
 		 </li>   
 		
 		<li class="topcoat-list__item2">
-		    <img src="resources/img/home.png" />
+		    <img src="student_modules/resources/img/home.png" />
 			<a href="#/main">Home</a>
 		</li>		  
 		
 		<li class="topcoat-list__item2" >
-		    <img  src="resources/img/gmap.png" />
+		    <img  src="student_modules/resources/img/gmap.png" />
 			<a href="#/reports">Reports</a>
 		</li>
         
 		<li class="topcoat-list__item2" >
-		    <img src="resources/img/settings.png" />
+		    <img src="student_modules/resources/img/settings.png" />
 			<a href="#/settings">Settings</a>
 		</li>
 		
 		<li class="topcoat-list__item2" ng-click="reload()">
-		   <img src="resources/img/refresh.png" />
+		   <img src="student_modules/resources/img/refresh.png" />
 			Refresh
 		</li>	
 		
 		 <li class="topcoat-list__item2" style="height:15px">
-		   <img src="resources/img/logout.png" />
-		   <a href="{{ip}}/studentlogout">Logout</a>
+		   <img src="student_modules/resources/img/logout.png" />
+		   <a href="http://localhost:3000/studentlogout">Logout</a>
 		 </li>
 		 
         </ul>
@@ -42,12 +42,14 @@
 <!------------------------ Main Page Top Bar ------------------------>
     <div class="topcoat-navigation-bar">
         <div class="topcoat-navigation-bar__item left quarter">
-          
-             <h1 class="topcoat-navigation-bar__title"  ng-click="$spMenu.toggle()"><img style="float:center; width:29px; height:34px; margin-top:-1px;"  src="resources/img/list.png" ></img></h1>
-            
+           <h1 class="topcoat-navigation-bar__title" ng-click="$spMenu.toggle()">
+		   <img id="hamburger-menu" src="student_modules/resources/img/list.png" ></img>
+		   </h1>  
         </div>
         <div class="topcoat-navigation-bar__item center half">
-              <a href="#main"><h1 class="topcoat-navigation-bar__title"><img style="float:center; width:120px; height:42px; margin-right:10px;margin-top: 4px;"  src="resources/img/NB_logo.png" ></img></h1></a>
+            <a href="#main"><h1 class="topcoat-navigation-bar__title">
+			<img id="topbar-logo" src="student_modules/resources/img/NB_logo.png" ></img>
+			</h1></a>
         </div>
 		
 		  <div class="topcoat-navigation-bar__item right quarter">
@@ -64,7 +66,7 @@
 		<ul id="initial" ng-model="html" ng-show="show_initial">
 		<li  ng-repeat="item in subject" class="topcoat-list__item" style="background-color: #FFFFFF;color:black">
 		<div ng-click='updateView(item.id, item.lecturer_id)'>
-		<img style="float:left; width:42px; height:45px; margin-right:10px;"class="movieimg" src="resources/img/{{item.empid}}.png" />
+		<img style="float:left; width:42px; height:45px; margin-right:10px;"class="movieimg" src="lecturermodules/resources/img/{{item.empid}}.png" />
 		<strong style="font-size:17px;">{{item.name}}</strong><p style="font-size:12px;">{{item.id}}</p>
 		</div>
 		<div style="clear:both;"></div>   
@@ -83,7 +85,7 @@
 		<ul id="folder" ng-show="show_folder">
 		<li  ng-repeat="item in dir | filter:{folder:'true'}" class="topcoat-list__item" style="background-color: #FFFFFF;color:black">
 		<div>
-		<img style="float:left; width:42px; height:45px; margin-right:10px;"class="movieimg" src="resources/img/{{items.id}}.png" />
+		<img style="float:left; width:42px; height:45px; margin-right:10px;"class="movieimg" src="lecturermodules/resources/img/{{items.id}}.png" />
 		<strong style="font-size:17px;" ng-click='updateView(item.path)'>{{item.name}}</strong>
 		</div>
 		<div style="clear:both;"></div>   
