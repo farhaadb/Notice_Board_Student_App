@@ -10,7 +10,7 @@ function LoginController($scope,$http,myNotices,$location) {
 
 	if ($scope.student_no == "21024909" &&	$scope.password == "farhaad"){
 			
-			localStorage.setItem("student_id",res.id);
+			localStorage.setItem("student_id",$scope.student_no);
 			alert('Login is successful');
 			$location.path("/main");
 	
