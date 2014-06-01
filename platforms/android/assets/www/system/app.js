@@ -1,4 +1,4 @@
-var noticeboard = angular.module('App',['shoppinpal.mobile-menu', 'App.services'])
+var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'App.services', 'ngSanitize'])
     
 	noticeboard.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
         $routeProvider
@@ -23,6 +23,11 @@ var noticeboard = angular.module('App',['shoppinpal.mobile-menu', 'App.services'
 			 .when("/lecturer", {
                 templateUrl: "partials/lecturer.html",
 				  controller: 'LecturerController',
+            })
+			
+			.when("/files", {
+                templateUrl: "partials/files.html",
+				  controller: 'FilesController',
             })
 			
 			 .when("/settings", {

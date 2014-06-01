@@ -28,6 +28,6 @@ noticeboard.factory('myNotices', function($http, $q, $timeout) {
 			return deferred.promise;
 		},
 		
-		ip: "http://dutnoticeboard.co.za",
+		ip: "http://10.0.0.7:3000",
    }
 });
