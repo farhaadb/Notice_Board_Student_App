@@ -35,12 +35,12 @@ var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'Ap
             })
 			
 			.when("/lecturerlist", {
-                templateUrl: "student_modules/partials/lecturerlist.html",
+                templateUrl: "partials/lecturerlist.html",
 				  controller: 'LecturerListController',
             })
 			
 			 .when("/about", {
-                templateUrl: "student_modules/partials/about.html",
+                templateUrl: "partials/about.html",
             })
 			
             .otherwise({
