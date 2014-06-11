@@ -1,6 +1,11 @@
 'use strict';
    
-function MainController($scope,$http ,myNotices,$window) {
+function MainController($scope,$http ,myNotices,$window,$location) {
+
+	if(localStorage.getItem("student_id")==undefined){
+		$location.path("/login");
+	}
+	
 	$scope.statusmessage =  'Updating...';
 	
 	$scope.reload =function(){
@@ -109,5 +114,10 @@ function MainController($scope,$http ,myNotices,$window) {
 			console.log('WE ARE HAVING TROUBLE RETRIEVING THE PROFILE PICTURE');
 			$scope.statusmessage =  'WE ARE HAVING TROUBLE RETRIEVING THE PROFILE PICTURE';
         }); 
+	}
+	
+	$scope.logout=function(){
+		localStorage.removeItem("student_id");
+		$location.path("/login");
 	}
 } 							

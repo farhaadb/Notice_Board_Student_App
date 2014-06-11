@@ -1,6 +1,11 @@
 'use strict';
    
 function LoginController($scope,$http,myNotices,$location) {
+
+	if(localStorage.getItem("student_id")!=undefined){
+		$location.path("/main");
+	}
+	
 	$scope.student_no = "21024909";
 	$scope.password = "farhaad";
     var loginDetails ={'student_no' : $scope.student_no,'password' : $scope.password};

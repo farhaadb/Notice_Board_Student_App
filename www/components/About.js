@@ -2,6 +2,10 @@
    
 function AboutController($scope,$http,myNotices,$location) {
 
+	if(localStorage.getItem("student_id")==undefined){
+		$location.path("/login");
+	}
+
 	$scope.student_id=localStorage.getItem("student_id");
 	$scope.ip = myNotices.ip;
 		
@@ -53,6 +57,11 @@ function AboutController($scope,$http,myNotices,$location) {
 			console.log('WE ARE HAVING TROUBLE RETRIEVING THE PROFILE PICTURE');
 			$scope.statusmessage =  'WE ARE HAVING TROUBLE RETRIEVING THE PROFILE PICTURE';
 		}); 
+	}
+	
+	$scope.logout=function(){
+		localStorage.removeItem("student_id");
+		$location.path("/login");
 	}
 }		
 		

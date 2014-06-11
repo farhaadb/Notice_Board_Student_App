@@ -1,6 +1,11 @@
 'use strict';
    
-function ReportsController($scope,$http ,myNotices,$window) {
+function ReportsController($scope,$http,myNotices,$window,$location) {
+	
+	if(localStorage.getItem("student_id")==undefined){
+		$location.path("/login");
+	}
+	
 	$scope.statusmessage =  'Updating...';
 	$scope.ip = myNotices.ip;
 	$scope.student_id=localStorage.getItem("student_id");
@@ -101,5 +106,10 @@ function ReportsController($scope,$http ,myNotices,$window) {
 				$scope.statusmessage =  'WE ARE HAVING TROUBLE RETRIEVING THE PROFILE PICTURE';
 			}); 
 		}
+		
+	$scope.logout=function(){
+		localStorage.removeItem("student_id");
+		$location.path("/login");
+	}
 
 }						
