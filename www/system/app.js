@@ -46,6 +46,6 @@ var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'Ap
             })
 			
             .otherwise({
-                redirectTo: "/login"
+                redirectTo: "/main"
             });
     }]);
