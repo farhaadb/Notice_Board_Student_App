@@ -42,6 +42,7 @@ var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'Ap
 			
 			 .when("/about", {
                 templateUrl: "partials/about.html",
+				  controller: 'AboutController',
             })
 			
             .otherwise({
