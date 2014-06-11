@@ -5,49 +5,49 @@
          
 		 <li class="topcoat-list__item2"  style="height:88px">
 		    <a href="#/profile">
-			<img  id="personal-image" src="student_modules/resources/img/0003.png" />
-				<div id="personal">Hayden Sookchand<br>Electronic Eng</div>
+			<img  id="personal-image" ng-src="{{profile_image}}" />
+				<div id="personal">{{fname}} {{lname}}</div>
 			</a>
 		 </li>   
 		
 		<li class="topcoat-list__item2">
-		    <img src="student_modules/resources/img/home.png" />
+		    <img src="resources/img/home.png" />
 			<a href="#/main">Home</a>
 		</li>		  
 		
 		<li class="topcoat-list__item2" >
-		    <img  src="student_modules/resources/img/gmap.png" />
+		    <img  src="resources/img/gmap.png" />
 			<a href="#/reports">Reports</a>
 		</li>
         
 		<li class="topcoat-list__item2" >
-		    <img src="student_modules/resources/img/settings.png" />
-			<a href="#/settings">Settings</a>
+		    <img src="resources/img/settings.png" />
+			<a href="#/profile">Profile</a>
 		</li>
 		
 		<li class="topcoat-list__item2" >
-		    <img src="student_modules/resources/img/settings.png" />
+		    <img src="resources/img/settings.png" />
 			<a href="#/files">Files</a>
 		</li>	
 
 		<li class="topcoat-list__item2" >
 	
-	    <img src="student_modules/resources/img/settings.png" />
+	    <img src="resources/img/settings.png" />
 			<a href="#/lecturerlist">Lecturers</a>
 		</li>
 		
 		<li class="topcoat-list__item2" ng-click="reload()">
-		   <img src="student_modules/resources/img/refresh.png" />
+		   <img src="resources/img/refresh.png" />
 			Refresh
 		</li>	
 		
 		<li class="topcoat-list__item2">
-		   <img src="student_modules/resources/img/refresh.png" />
+		   <img src="resources/img/refresh.png" />
 			<a href="#/about">About</a>
 		</li>
 		
 		 <li class="topcoat-list__item2" style="height:15px">
-		   <img src="student_modules/resources/img/logout.png" />
+		   <img src="resources/img/logout.png" />
 		   <a href="http://localhost:3000/studentlogout">Logout</a>
 		 </li>
 		 
@@ -59,17 +59,17 @@
     <div class="topcoat-navigation-bar">
         <div class="topcoat-navigation-bar__item left quarter">
            <h1 class="topcoat-navigation-bar__title" ng-click="$spMenu.toggle()">
-		   <img id="hamburger-menu" src="student_modules/resources/img/list.png" ></img>
+		   <img id="hamburger-menu" src="resources/img/list.png" ></img>
 		   </h1>  
         </div>
         <div class="topcoat-navigation-bar__item center half">
             <a href="#main"><h1 class="topcoat-navigation-bar__title">
-			<img id="topbar-logo" src="student_modules/resources/img/nb_logo.png" ></img>
+			<img id="topbar-logo" src="resources/img/nb_logo.png" ></img>
 			</h1></a>
         </div>
 		
 		  <div class="topcoat-navigation-bar__item right quarter">
-             <img style="width:20px;height=20px;" src="student_modules/resources/img/arrow.png" ng-show="show_directory_options" ng-click="goBack()">
+             <img style="width:20px;height=20px;" src="resources/img/arrow.png" ng-show="show_directory_options" ng-click="goBack()">
         </div>
 		
     </div>
@@ -83,7 +83,7 @@
 		<ul id="initial" ng-model="html" ng-show="show_initial" class="topcoat-list__container">
 		<li  ng-repeat="item in subject" class="topcoat-list__item" style="background-color: #FFFFFF;color:black">
 		<div ng-click='updateView(item.id, item.lecturer_id)'>
-		<img style="float:left; width:80px; height:60px; margin-right:10px;"class="movieimg" src="student_modules/resources/img/folder.png" />
+		<img style="float:left; width:80px; height:60px; margin-right:10px;"class="movieimg" src="resources/img/folder.png" />
 		<strong style="font-size:17px;">{{item.name}}</strong><p style="font-size:12px;">{{item.id}}</p>
 		</div>
 		<div style="clear:both;"></div>   
@@ -104,7 +104,7 @@
 		Folders
 		<li  ng-repeat="item in dir | filter:{folder:'true'}" class="topcoat-list__item" style="background-color: #FFFFFF;color:black">
 
-		<img style="float:left; width:40px; height:30px; margin-right:10px;" src="student_modules/resources/img/folder.png" />
+		<img style="float:left; width:40px; height:30px; margin-right:10px;" src="resources/img/folder.png" />
 		<strong style="font-size:17px;" ng-click='updateView(item.path)'>{{item.name}}</strong>
 
 		<div style="clear:both;"></div>   
@@ -117,7 +117,7 @@
 		Files
 		<li  ng-repeat="item in dir | filter:{folder:'false'}" class="topcoat-list__item" style="background-color: #FFFFFF;color:black">
 		<div>
-		<img style="float:left; width:42px; height:45px; margin-right:10px;"class="movieimg" src="student_modules/resources/img/file.png" />
+		<img style="float:left; width:42px; height:45px; margin-right:10px;"class="movieimg" src="resources/img/file.png" />
 		<strong style="font-size:17px;"><a ng-href="{{ip}}/lecturer/{{item.path}}" download>{{item.name}}</a></strong>
 		</div>
 		<div style="clear:both;"></div>   
