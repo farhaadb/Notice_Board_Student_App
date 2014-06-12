@@ -1,4 +1,4 @@
-var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'App.services', 'ngSanitize', 'angularFileUpload'])
+var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'App.services', 'ngSanitize', 'angularFileUpload']);
     
 	noticeboard.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
         $routeProvider
@@ -49,3 +49,8 @@ var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'Ap
                 redirectTo: "/main"
             });
     }]);
+	
+document.addEventListener('deviceready', function() {
+	angular.bootstrap(document.getElementsByTagName("body")[0], ['App']);
+	app.onDeviceReady();
+}, false);
