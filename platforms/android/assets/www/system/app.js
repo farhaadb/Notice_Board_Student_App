@@ -1,4 +1,4 @@
-var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'App.services', 'ngSanitize'])
+var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'App.services', 'ngSanitize', 'angularFileUpload']);
     
 	noticeboard.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
         $routeProvider
@@ -9,7 +9,7 @@ var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'Ap
 			
 			 .when("/profile", {
                 templateUrl: "partials/profile.html",
-				  controller: 'LecturerController',
+				  controller: 'ProfileController',
             })
 			
 			.when("/login", {
@@ -18,6 +18,7 @@ var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'Ap
             })
             .when("/reports", {
                 templateUrl: "partials/reports.html",
+				  controller: 'ReportsController',
             })
 			
 			 .when("/lecturer", {
@@ -34,7 +35,22 @@ var noticeboard = angular.module('App',['ngRoute', 'shoppinpal.mobile-menu', 'Ap
                 templateUrl: "partials/settings.html",
             })
 			
+			.when("/lecturerlist", {
+                templateUrl: "partials/lecturerlist.html",
+				  controller: 'LecturerListController',
+            })
+			
+			 .when("/about", {
+                templateUrl: "partials/about.html",
+				  controller: 'AboutController',
+            })
+			
             .otherwise({
-                redirectTo: "/login"
+                redirectTo: "/main"
             });
     }]);
+	
+document.addEventListener('deviceready', function() {
+	angular.bootstrap(document.getElementsByTagName("body")[0], ['App']);
+	app.onDeviceReady();
+}, false);

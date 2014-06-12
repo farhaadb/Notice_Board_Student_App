@@ -1,15 +1,26 @@
 'use strict';
    
-function MainController($scope,$http ,myNotices,$window) {
+function MainController($scope,$http ,myNotices,$window,$location) {
+
+	if(localStorage.getItem("student_id")==undefined){
+		$location.path("/login");
+		return;
+	}
+	
 	$scope.statusmessage =  'Updating...';
+	
 	$scope.reload =function(){
 	$window.location.reload();
 	}
+	
 	$scope.student_id=localStorage.getItem("student_id");
 	$scope.ip = myNotices.ip;
+	
 	var url = $scope.ip+'/getnotices';
 	
 	init();
+	getStudentDetails();
+	getStudentPicture();
 	
 		function init(){
 				$scope.conn = true;
@@ -24,7 +35,7 @@ function MainController($scope,$http ,myNotices,$window) {
 						//check if picture is valid and set path to picture
 						if(data[i].picture==null)
 						{
-							data[i].picture=$scope.ip+"/default/download.jpg";
+							data[i].picture=$scope.ip+"/student_modules/resources/img/1.png";
 						}
 						
 						else
@@ -62,4 +73,52 @@ function MainController($scope,$http ,myNotices,$window) {
 					$scope.conn = false;
         		});
 		};
+		
+	function getStudentDetails()
+	{
+		var url=$scope.ip+'/returnstudentdetails';
+		
+		myNotices.post(url,{'id': $scope.student_id}).then(function(details) {
+			
+				var student=details[0];
+				$scope.fname=student.fname;
+				$scope.lname=student.lname;
+						
+			},
+				function(data) { //failure
+					console.log('WE ARE HAVING TROUBLE RETRIEVING THE PROFILE DETAILS');
+					$scope.statusmessage =  'WE ARE HAVING TROUBLE RETRIEVING THE PROFILE DETAILS';
+        		}); 
+	}
+	
+
+	function getStudentPicture()
+	{
+		var url=$scope.ip+'/returnstudentpicture';
+		
+		myNotices.post(url,{'path': $scope.student_id}).then(function(pic) {
+			if(pic.status!=undefined)
+			{
+				$scope.profile_image=myNotices.default_profile_picture;
+			}
+						
+			else
+			{
+				console.log(myNotices.default_profile_picture);
+				$scope.image_name=pic[0].name;
+				$scope.profile_image=$scope.ip+"/student/"+$scope.student_id+"/profile/"+$scope.image_name;
+				
+			}
+
+		},
+		function(data) { //failure
+			console.log('WE ARE HAVING TROUBLE RETRIEVING THE PROFILE PICTURE');
+			$scope.statusmessage =  'WE ARE HAVING TROUBLE RETRIEVING THE PROFILE PICTURE';
+        }); 
+	}
+	
+	$scope.logout=function(){
+		localStorage.removeItem("student_id");
+		$location.path("/login");
+	}
 } 							

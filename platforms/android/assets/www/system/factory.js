@@ -29,5 +29,7 @@ noticeboard.factory('myNotices', function($http, $q, $timeout) {
 		},
 		
 		ip: "http://10.0.0.7:3000",
+		
+		default_profile_picture: "http://dutnoticeboard.co.za/student_modules/resources/img/1.png",
    }
 });

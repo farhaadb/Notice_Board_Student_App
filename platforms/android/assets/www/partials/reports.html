@@ -5,8 +5,8 @@
          
 		 <li class="topcoat-list__item2"  style="height:88px">
 		    <a href="#/profile">
-			<img  id="personal-image" src="resources/img/0003.png" />
-				<div id="personal">Hayden Sookchand<br>Electronic Eng</div>
+			<img  id="personal-image" ng-src="{{profile_image}}" />
+				<div id="personal">{{fname}} {{lname}}</div>
 			</a>
 		 </li>   
 		
@@ -22,7 +22,18 @@
         
 		<li class="topcoat-list__item2" >
 		    <img src="resources/img/settings.png" />
-			<a href="#/settings">Settings</a>
+			<a href="#/profile">Profile</a>
+		</li>
+		
+		<li class="topcoat-list__item2" >
+		    <img src="resources/img/settings.png" />
+			<a href="#/files">Files</a>
+		</li>	
+
+		<li class="topcoat-list__item2" >
+	
+	    <img src="resources/img/settings.png" />
+			<a href="#/lecturerlist">Lecturers</a>
 		</li>
 		
 		<li class="topcoat-list__item2" ng-click="reload()">
@@ -30,9 +41,14 @@
 			Refresh
 		</li>	
 		
-		 <li class="topcoat-list__item2" style="height:15px">
+		<li class="topcoat-list__item2">
+		   <img src="resources/img/refresh.png" />
+			<a href="#/about">About</a>
+		</li>
+		
+		 <li class="topcoat-list__item2" style="height:15px" ng-click="logout()">
 		   <img src="resources/img/logout.png" />
-		   <a href="#/">Logout</a>
+		   Logout
 		 </li>
 		 
         </ul>
@@ -59,18 +75,31 @@
     </div>
 	<!------------ Main Content------------------------>  	
  <div class="content" style="top:75px;">
-	<div id="first"><div id="title">BEST MARK - [Subject]</div><div id ="mark">88%</div></div>
-	<div id="second"><div id="title">WORST MARK - [Subject]</div><div id ="mark"> 28%</div></div> 
-	<div id="third"><div id="title">AVERAGE</div><div id ="mark">58%</div></div>
-	<div id="fourth">
-		<ul class="list" style="background-color: #7E64A1;">
-			<li class="list-divider">All Marks</li>
-			<li><strong> [Test 1] </strong> [Mark]  </li>
-			<li><strong> [Test 2] </strong> [Mark]  </li>	
-			<li><strong> [Test 3] </strong> [Mark]  </li>	 
-			<li><strong> [Test 4] </strong> [Mark]  </li>	 
-			<li><strong> [Test 5] </strong> [Mark]  </li>	  
-		</ul>
+	<div ng-repeat="(key, val) in data">Visualize data - {{val}}
+<!--	<table border="1">
+		<tr ng-repeat="item in val track by $index">{{item.subject}}
+			<td ng-repeat="(key1, val1) in item">{{val1}}</td>
+		</tr>
+	</table>-->
+		<h4>{{val[0].subject}}<h4>
+		<table border=1>
+			<tr>
+				<th></th>
+				<th ng-repeat="(anotherkey, anothervalue) in val[1]">{{anotherkey}}</th>
+			</tr>
+			<tr>
+				<td>Marks</td>
+				<td ng-repeat="(anotherkey, anothervalue) in val[1]">{{anothervalue}}</td>
+			</tr>
+			<tr>
+				<td>Class Averages</td>
+				<td ng-repeat="(anotherkey, anothervalue) in val[2]">{{anothervalue}}</td>
+			</tr>
+			<tr>
+				<td>Position</td>
+				<td ng-repeat="(anotherkey, anothervalue) in val[3]">{{anothervalue}}</td>
+			</tr>
+		</table>
 	</div>
  </div>
 

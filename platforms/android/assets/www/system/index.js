@@ -1,28 +1,19 @@
 var app = {
 
-    initialize: function() {
-        this.bindEvents();
-    },
-
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        this.onDeviceReady();
-    },
-
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        document.addEventListener("backbutton", this.onBackKeyDown, false);
-		
+        //document.addEventListener("backbutton", this.onBackKeyDown, false);
+
 		var pushNotification = window.plugins.pushNotification;
-          
-        pushNotification.register(
+		
+		pushNotification.register(
         this.successHandler,
         this.errorHandler,
         {
             "senderID":"1097264179432",
             "ecb":"app.onNotification"
         });
-    },
+	},
 
     onBackKeyDown: function(e){
 		e.preventDefault();
@@ -90,6 +81,7 @@ var app = {
 			
 				else if(e.payload.type=="marks"){
 					//go to marks
+					window.location.href = '#/reports?'+e.payload.location;
 				}
 				
                 if ( e.coldstart )
@@ -129,8 +121,83 @@ var app = {
 
         console.log('Received Event: ' + id);*/
     },
+	
+	chooseImage: function($scope){
+		navigator.camera.getPicture(
+                $scope.uploadPhoto,
+                function(message) { alert('get picture failed'); },
+                {
+                    quality         : 50,
+                    destinationType : navigator.camera.DestinationType.FILE_URI,
+                    sourceType      : navigator.camera.PictureSourceType.PHOTOLIBRARY
+                }
+         );
+	
+	},
 
+	uploadPhoto: function (imageURI, $scope) {
+		var options = new FileUploadOptions();
+		options.fileKey="file";
+		
+		var file_name=imageURI.substr(imageURI.lastIndexOf('/')+1)+".jpg";
+		file_name=file_name.replace(/%/g,"");
+		options.fileName=file_name;
+		
+		options.mimeType="image/jpeg";
 
+		var params = new Object();
+		params.key = localStorage.getItem("student_id")+"/profile";
 
+		options.params = params;
+
+		var ft = new FileTransfer();
+		ft.upload(imageURI, encodeURI($scope.ip+"/student-picture-upload"), $scope.uploadComplete, $scope.uploadFailed, options);
+    },
+
+	downloadFile: function(path, $scope){
+	alert("in download function");
+	
+		var fileTransfer = new FileTransfer();
+		var uri = encodeURI(path);
+		var file_name=path.substr(path.lastIndexOf('/')+1);
+		var progress="";
+		
+		fileTransfer.onprogress = function(progressEvent) {
+			if (progressEvent.lengthComputable) {
+				var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+				$scope.setProgress(perc + "% loaded...");
+			} else {
+				if(progress==""){
+					progress="Loading";
+				}
+				
+				else{
+					progress+=".";
+				}
+				
+				$scope.setProgress(progress);
+			}
+		};
+
+		fileTransfer.download(
+			uri,
+			"cdvfile://localhost/persistent/"+file_name,
+			function(entry) {
+				alert("download complete: " + entry.toURL());
+			},
+			function(error) {
+				alert("download error source " + error.source);
+				alert("download error target " + error.target);
+				alert("upload error code" + error.code);
+			},
+			false,
+			{
+				headers: {
+					"Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+				}
+			}
+		);
+	
+	},
 
 };

@@ -4,6 +4,7 @@ function MainController($scope,$http ,myNotices,$window,$location) {
 
 	if(localStorage.getItem("student_id")==undefined){
 		$location.path("/login");
+		return;
 	}
 	
 	$scope.statusmessage =  'Updating...';
