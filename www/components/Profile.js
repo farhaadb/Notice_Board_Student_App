@@ -252,10 +252,47 @@ function ProfileController($scope,$http,myNotices,$location,$fileUploader) {
 
 	}
 	
+	$scope.selectPhoto=function(){
+		alert("selecting image");
+		window.app.chooseImage($scope);		
+	}
+	
+	$scope.uploadPhoto=function(imageURI){
+		$scope.is_upload_complete=false;
+		window.app.uploadPhoto(imageURI, $scope);
+	}
+	
+	$scope.uploadComplete=function(r){
+		console.log("Code = " + r.responseCode);
+		console.log("Response = " + r.response);
+		console.log("Sent = " + r.bytesSent);
+		
+		//get directory listing first so that we can delete the previous uploaded picture
+		if($scope.show_default_image==false) //we can safely assume that the folder is already empty so no need to delete
+		{
+			$scope.deleteProfilePic(); //deleteProfilePic() will also call getProfilePic()
+		}
+		
+		else
+		{
+			getProfilePic();
+		}
+		
+		$scope.is_upload_complete=true;
+	}
+	
+	$scope.uploadFailed=function(r){
+		alert("An error has occurred: Code = " + error.code);
+		console.log("upload error source " + error.source);
+		console.log("upload error target " + error.target);
+	}
+	
 	$scope.logout=function(){
 		localStorage.removeItem("student_id");
 		$location.path("/login");
 	}
+	
+	
 	
 		
 		
