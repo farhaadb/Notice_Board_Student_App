@@ -253,7 +253,7 @@ function ProfileController($scope,$http,myNotices,$location,$fileUploader) {
 	}
 	
 	$scope.selectPhoto=function(){
-		alert("selecting image");
+		//alert("selecting image");
 		window.app.chooseImage($scope);		
 	}
 	
