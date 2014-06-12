@@ -22,9 +22,12 @@
 	<link rel="stylesheet" href="resources/css/custom/report.css">	
      
 	 <!---------------------------- Scripts ---------------------------------------------->
-    <script type="text/javascript" src="system/core/cordova.js"></script>
+	 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.js"></script>
+	 
+	<script type="text/javascript" src="system/core/cordova.js"></script>
 	<script type="text/javascript" src="system/index.js"></script>
 	<script type="text/javascript" charset="utf-8" src="system/core/PushNotification.js"></script>
+	
 			
 			<!-------------- Core -------------> 
 	<script type="text/javascript" src="system/core/jquery-1.11.1.min.js"></script>
@@ -49,12 +52,10 @@
 	<script type="text/javascript" src="components/Reports.js"></script>
 	<script type="text/javascript" src="components/Profile.js"></script>
 	<script type="text/javascript" src="components/About.js"></script>
-	<script type="text/javascript">
-            app.initialize();
-    </script>
+
 </head>
  <!---------------------------- Body---------------------------------------------->  
-<body ng-app="App"> 
+<body> 
  <!---------------------------- Views---------------------------------------------->  	
 	<div ng-view></div>
 
