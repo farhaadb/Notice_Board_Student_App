@@ -90,20 +90,9 @@
 		<!----------------------------------File Upload---------------------------->
 		 <div id="file-upload" class="settings-upload" ng-file-drop>
                 <div>
-                    <input ng-file-select type="file"/><br/>
+                    <input type="button" value="Choose file" ng-click="selectPhoto()"/><br/>
                 </div>
-                <div>
-					<span ng-show="uploader.isHTML5"></span>
-					<ul class="settings-list">
-						<li ng-repeat="item in uploader.queue">
-							<div ng-show="uploader.isHTML5">
-                                    <div class="progress" style="margin-bottom: 0;">
-                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-                                    </div>
-							</div>
-						</li>
-					</ul>
-                  </div>
+
 <!----------------------------------Upload Successful---------------------------->
 			<div ng-show="is_upload_complete">
 				Profile Picture Updated
