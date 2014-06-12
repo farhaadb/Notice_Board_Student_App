@@ -150,12 +150,12 @@ function ProfileController($scope,$http,myNotices,$location,$fileUploader) {
 				has_started_string_construction=true;
 			}
 		}
-		
+
 		if(has_started_string_construction)
 		{
 			sql+=" WHERE id='"+$scope.student_id+"'";
 			
-			var url=i$scope.p+"/updatestudentsettings";
+			var url=$scope.ip+"/updatestudentsettings";
 			
 			myNotices.post(url,{'sql': sql}).then(function(status) {
 				getDetails();
