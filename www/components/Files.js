@@ -8,7 +8,7 @@ function FilesController($scope,$http ,myNotices,$window,$location) {
 	
 	$scope.statusmessage =  'Updating...';
 	$scope.ip = myNotices.ip;
-	$scope.student_id=localStorage.getItem("student_id");;
+	$scope.student_id=localStorage.getItem("student_id");
 	
 	$scope.path_history=[];
 	
@@ -295,6 +295,19 @@ function FilesController($scope,$http ,myNotices,$window,$location) {
 			
 		}
 	}
+	/* for use with cordova download plugin
+	$scope.download=function(path){
+		alert("calling download function for - "+path);
+		window.app.downloadFile(path, $scope);
+	}
+	
+	$scope.setProgress=function(progress){
+		$scope.download_progress=progress;
+	}
+	/*
+	$scope.getPath=function(){
+	
+	}*/
 		
 	$scope.logout=function(){
 		localStorage.removeItem("student_id");
