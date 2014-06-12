@@ -30,7 +30,7 @@ function LecturerListController($scope,$http ,myNotices,$window, $location) {
 				}
 				
 				else{
-					data[i].picture=$scope.ip+"/lecturer/"+data[i].lecturer_id+"/profile/"+data[i].picture;
+					data[i].picture=$scope.ip+"/lecturer/"+data[i].id+"/profile/"+data[i].picture;
 				}
 			}
 			
