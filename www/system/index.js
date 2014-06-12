@@ -69,19 +69,19 @@ var app = {
              
             else
             {  // otherwise we were launched because the user touched a notification in the notification tray.
-							
+
 				if(e.payload.type=="general"){
 					window.location.href = '#/main';
 				}
 			
 				else if(e.payload.type=="upload"){
-					var location=body.substr(32);
-					window.location.href = '#/files?'+e.payload.location;
+					var location=e.payload.message.substr(32);
+					window.location.href = '#/files?'+location;
 				}
 			
 				else if(e.payload.type=="marks"){
 					//go to marks
-					window.location.href = '#/reports?'+e.payload.location;
+					window.location.href = '#/reports';
 				}
 				
                 if ( e.coldstart )
